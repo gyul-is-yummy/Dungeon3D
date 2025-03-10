@@ -18,8 +18,11 @@ MonoBehaviour:
     - 20a2efb6b0063f2418f691a4d5a6e7de
     - 55e609e3ea2e3db47a8e84c81339331e
     - 03e21854b5f2a5847b74380d95136867
+    - 7cbf9961ee8daad499de4518dc0c8938
+    - 4747960e85fcf6946b997c674bfee778
+    - f54d1bd14bd3ca042bd867b519fee8cc
     values:
-    - iconNameOrGuid: NavMeshObstacle Icon
+    - iconNameOrGuid: TestFailed
       colorIndex: 0
       isIconRecursive: 0
       isColorRecursive: 0
@@ -34,5 +37,17 @@ MonoBehaviour:
     - iconNameOrGuid: cs Script Icon
       colorIndex: 4
       isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: RawImage Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: Font Icon
+      colorIndex: 6
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: Font Icon
+      colorIndex: 0
+      isIconRecursive: 1
       isColorRecursive: 0
   bookmarks: []
