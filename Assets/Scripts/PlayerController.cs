@@ -22,6 +22,15 @@ public class PlayerController : MonoBehaviour
     public PlayerState state = PlayerState.Idle;    //현재 플레이어의 상태
     private Vector2 movementInput;                  //플레이어의 이동 입력값
 
+    [Header("Look")]
+    public Transform cameraContainer;
+    public float minXLook = -85;
+    public float maxXLook = 85;
+    private float camCurXRot;
+    public float lookSensitivity = 0.1f;
+    private Vector2 mouseDelta;
+    private Vector2 mouseScrollDelta;
+
     [Header("Check the private")]
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Animator _animator;
@@ -33,6 +42,12 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
         groundLayerMask = ~LayerMask.GetMask("Player");
+        cameraContainer = GetComponentInChildren<Camera>().transform;
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void FixedUpdate()
@@ -52,6 +67,11 @@ public class PlayerController : MonoBehaviour
         //    case PlayerState.Attack:
         //        break;
         //}
+    }
+
+    private void LateUpdate()
+    {
+        CameraLook();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -134,4 +154,24 @@ public class PlayerController : MonoBehaviour
         //하나도 닿지 않으면 false
         return false;
     }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        mouseDelta = context.ReadValue<Vector2>();
+    }
+    public void OnPerspective(InputAction.CallbackContext context)
+    {
+        mouseScrollDelta = context.ReadValue<Vector2>();
+    }
+
+    void CameraLook()
+    {
+        //민감도를 곱해준다.
+        camCurXRot += mouseDelta.y * lookSensitivity;
+        camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook);
+        //cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
+
+        transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
+    }
+
 }

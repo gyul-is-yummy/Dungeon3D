@@ -1,5 +1,5 @@
 {
-    "name": "Player Input",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Perspective",
+                    "type": "Value",
+                    "id": "c5713d05-6030-4f6d-9802-bd023540dc7b",
+                    "expectedControlType": "Delta",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -168,6 +177,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f0a7c22-d14f-4917-bfce-b7b7e863282b",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Perspective",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
