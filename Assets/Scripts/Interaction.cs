@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
@@ -77,7 +78,20 @@ public class Interaction : MonoBehaviour
     }
 
     //줍기 메서드가 들어갈 자리
+    public void OnInteractInput(InputAction.CallbackContext context)
+    {
+        //키가 눌렸고, 현재 상호작용 가능한 오브젝트가 있다면
+        if (context.phase == InputActionPhase.Started && interactable != null)
+        {
+            //상호작용 실행
+            interactable.OnInteract();
 
+            //상호작용 완료 후 오브젝트 초기화
+            interactObject = null;
+            interactable = null;
+            promptText.gameObject.SetActive(false);
+        }
+    }
 }
 
 

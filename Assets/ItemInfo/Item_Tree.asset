@@ -15,7 +15,8 @@ MonoBehaviour:
   itemName: "\uB098\uBB34"
   itemType: 0
   itemInfo: "\uC0AC\uC2DC\uC0AC\uCCA0 \uD478\uB978 \uC18C\uB098\uBB34\uC785\uB2C8\uB2E4."
-  itemIcon: {fileID: 0}
-  dropPrefab: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 0eca93a017daed44e96b4303fea495d2, type: 3}
+  dropPrefab: {fileID: 2188448971541403715, guid: a90bc75212a7dce42b961e277b470f8e, type: 3}
   isStackable: 0
   maxStack: 0
+  consumables: []
