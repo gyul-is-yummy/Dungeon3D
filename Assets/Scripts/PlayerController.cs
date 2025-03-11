@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public enum PlayerState
 {
@@ -30,12 +31,14 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity = 0.1f;
     private Vector2 mouseDelta;
     private Vector2 mouseScrollDelta;
+    private bool canLook = true;
 
     [Header("Check the private")]
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Animator _animator;
     [SerializeField] private LayerMask groundLayerMask;
 
+    public Action inventory;                //인벤토리를 열기 위한 델리게이트
 
     private void OnValidate()
     {
@@ -172,6 +175,28 @@ public class PlayerController : MonoBehaviour
         //cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
 
         transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        //Tab키를 누르면 inventory 델리게이트에 있는 함수를 호출
+        if (context.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
+        }
+    }
+
+    //커서 토글
+    void ToggleCursor()
+    {
+        //커서가 잠겨있다는 것은, 인벤토리 창이 열리지 않았다는 것을 의미
+        //또한 마우스 이동에 따라 화면이 움직이고 있는 중이라는 뜻
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+
+        //만약 커서가 잠겨있다면 커서를 풀어주고, 그렇지 않다면 다시 커서를 잠근다.
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 
 }
