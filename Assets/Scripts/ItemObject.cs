@@ -14,13 +14,16 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public string GetinteractText()
     {
-        Debug.Log("GetinteractText에 들어왔다");
         string str = $"{data.itemName}\n{data.itemInfo}";
         return str;
     }
     public void OnInteract()
     {
+        CharacterManager.Instance.Player.itemData = data;
+        CharacterManager.Instance.Player.addItem?.Invoke();
 
+        //E키를 누르면 인벤토리로 이동시킬 것이므로 맵에 있는 Object는 삭제한다. 
+        Destroy(gameObject);
     }
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ItemType
 {
@@ -11,7 +12,7 @@ public enum ItemType
     Resource
 }
 
-public enum ContitionType
+public enum ConditionType
 {
     Health,
     Hunger,
@@ -21,7 +22,7 @@ public enum ContitionType
 [System.Serializable]
 public class ItemDataConsumable
 {
-    public ContitionType type;     //무엇을 회복시키는 소비 아이템인지
+    public ConditionType type;     //무엇을 회복시키는 소비 아이템인지
     public float value;             //얼마만큼 회복시켜 주는지
 }
 //ScriptableObject를 만들 때 빠르게 만들 수 있도록 에셋 생성 메뉴창에 추가

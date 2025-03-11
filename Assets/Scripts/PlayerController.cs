@@ -57,19 +57,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         _animator.SetBool("IsMoving", state != PlayerState.Idle);
-
-        //switch (state)
-        //{
-        //    case PlayerState.Idle:
-                
-        //        break;
-        //    case PlayerState.Move:
-        //        break;
-        //    case PlayerState.Jump:
-        //        break;
-        //    case PlayerState.Attack:
-        //        break;
-        //}
     }
 
     private void LateUpdate()
