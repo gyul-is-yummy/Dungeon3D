@@ -38,14 +38,12 @@ public class Interaction : MonoBehaviour
         {
             lastCheckTime = Time.time;
 
-            //ray를 캐릭터 기준으로 쏴야함...
+            //ray를 캐릭터 기준으로 쏜다.
             Ray ray = new Ray(transform.position + correctionVector, transform.forward);
             Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red);
 
             //ray를 맞은 오브젝트 정보를 저장할 변수
             RaycastHit hit;
-
-            Debug.Log("쏜다");
 
             //maxCheckDistance 거리 내에서 layerMask에 해당하는 오브젝트만 감지
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
